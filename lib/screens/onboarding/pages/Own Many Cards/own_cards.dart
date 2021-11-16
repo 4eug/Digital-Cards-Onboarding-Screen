@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import '../../../../constants.dart';
 
 class EducationDarkCardContent extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const EducationDarkCardContent();
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(
-      Icons.laptop_mac,
-      color: kWhite,
-      size: 96.0,
+    return Column(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Image.asset(Cards.kcard2),
+        )
+      ],
     );
   }
 }

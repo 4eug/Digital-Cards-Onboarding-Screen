@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
 
-class EducationDarkCardContent extends StatelessWidget {
+class OwnCard extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
-  const EducationDarkCardContent();
+  const OwnCard();
 
   @override
   Widget build(BuildContext context) {

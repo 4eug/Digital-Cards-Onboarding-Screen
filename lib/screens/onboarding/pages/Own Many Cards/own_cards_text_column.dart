@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/text_column.dart';
 
-class EducationTextColumn extends StatelessWidget {
+class OwnCardText extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
-  const EducationTextColumn();
+  const OwnCardText();
 
   @override
   Widget build(BuildContext context) {

@@ -3,18 +3,17 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
-import '../login/login.dart';
 import 'pages/Create A Card/index.dart';
 import 'pages/Notifications/index.dart';
 import 'pages/Own Many Cards/index.dart';
 import 'pages/onboarding_page.dart';
 import 'widgets/next_page_button.dart';
 import 'widgets/onboarding_page_indicator.dart';
-import 'widgets/ripple.dart';
 
 class Onboarding extends StatefulWidget {
   final double screenHeight;
 
+  // ignore: use_key_in_widget_constructors
   const Onboarding({
     required this.screenHeight,
   });
@@ -26,12 +25,10 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
   late final AnimationController _cardsAnimationController;
   late final AnimationController _pageIndicatorAnimationController;
-  late final AnimationController _rippleAnimationController;
 
   late Animation<Offset> _slideAnimationLightCard;
   late Animation<Offset> _slideAnimationDarkCard;
   late Animation<double> _pageIndicatorAnimation;
-  late Animation<double> _rippleAnimation;
 
   int _currentPage = 1;
 
@@ -46,18 +43,6 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
       vsync: this,
       duration: kButtonAnimationDuration,
     );
-    _rippleAnimationController = AnimationController(
-      vsync: this,
-      duration: kRippleAnimationDuration,
-    );
-
-    _rippleAnimation = Tween<double>(
-      begin: 0.0,
-      end: widget.screenHeight,
-    ).animate(CurvedAnimation(
-      parent: _rippleAnimationController,
-      curve: Curves.easeIn,
-    ));
 
     _setPageIndicatorAnimation();
     _setCardsSlideOutAnimation();
@@ -67,7 +52,6 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
   void dispose() {
     _cardsAnimationController.dispose();
     _pageIndicatorAnimationController.dispose();
-    _rippleAnimationController.dispose();
     super.dispose();
   }
 
@@ -78,7 +62,6 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
       case 1:
         return OnboardingPage(
           number: 1,
-          // lightCardChild: const CommunityLightCardContent(),
           darkCardChild: const CreateCard(),
           lightCardOffsetAnimation: _slideAnimationLightCard,
           darkCardOffsetAnimation: _slideAnimationDarkCard,
@@ -87,20 +70,18 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
       case 2:
         return OnboardingPage(
           number: 2,
-          // lightCardChild: const EducationLightCardContent(),
-          darkCardChild: const EducationDarkCardContent(),
+          darkCardChild: const OwnCard(),
           lightCardOffsetAnimation: _slideAnimationLightCard,
           darkCardOffsetAnimation: _slideAnimationDarkCard,
-          textColumn: const EducationTextColumn(),
+          textColumn: const OwnCardText(),
         );
       case 3:
         return OnboardingPage(
           number: 3,
-          // lightCardChild: const WorkLightCardContent(),
-          darkCardChild: const WorkDarkCardContent(),
+          darkCardChild: const NotificationCard(),
           lightCardOffsetAnimation: _slideAnimationLightCard,
           darkCardOffsetAnimation: _slideAnimationDarkCard,
-          textColumn: const WorkTextColumn(),
+          textColumn: const NotificationText(),
         );
       default:
         throw Exception("Page with number '$_currentPage' does not exist.");
@@ -192,21 +173,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
           await _cardsAnimationController.forward();
         }
         break;
-      case 3:
-        if (_pageIndicatorAnimation.status == AnimationStatus.completed) {
-          await _goToLogin();
-        }
-        break;
     }
-  }
-
-  Future<void> _goToLogin() async {
-    await _rippleAnimationController.forward();
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => Login(screenHeight: widget.screenHeight),
-      ),
-    );
   }
 
   @override
@@ -236,12 +203,6 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
                 ],
               ),
             ),
-          ),
-          AnimatedBuilder(
-            animation: _rippleAnimation,
-            builder: (_, Widget? child) {
-              return Ripple(radius: _rippleAnimation.value);
-            },
           ),
         ],
       ),

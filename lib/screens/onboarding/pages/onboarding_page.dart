@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -5,7 +7,6 @@ import '../widgets/cards_stack.dart';
 
 class OnboardingPage extends StatelessWidget {
   final int number;
-  // final Widget lightCardChild;
   final Widget darkCardChild;
   final Animation<Offset> lightCardOffsetAnimation;
   final Animation<Offset> darkCardOffsetAnimation;
@@ -13,7 +14,6 @@ class OnboardingPage extends StatelessWidget {
 
   const OnboardingPage({
     required this.number,
-    // required this.lightCardChild,
     required this.darkCardChild,
     required this.lightCardOffsetAnimation,
     required this.darkCardOffsetAnimation,
@@ -26,12 +26,10 @@ class OnboardingPage extends StatelessWidget {
       children: <Widget>[
         CardsStack(
           pageNumber: number,
-          // lightCardChild: lightCardChild,
           darkCardChild: darkCardChild,
           lightCardOffsetAnimation: lightCardOffsetAnimation,
           darkCardOffsetAnimation: darkCardOffsetAnimation,
         ),
-        // SizedBox(height: number % 2 == 1 ? 50.0 : 25.0),
         AnimatedSwitcher(
           duration: kCardAnimationDuration,
           child: textColumn,

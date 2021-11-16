@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/text_column.dart';
 
-class WorkTextColumn extends StatelessWidget {
-  const WorkTextColumn();
+class NotificationText extends StatelessWidget {
+  const NotificationText();
 
   @override
   Widget build(BuildContext context) {

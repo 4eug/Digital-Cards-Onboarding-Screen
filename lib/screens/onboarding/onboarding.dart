@@ -79,10 +79,10 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
         return OnboardingPage(
           number: 1,
           // lightCardChild: const CommunityLightCardContent(),
-          darkCardChild: const CommunityDarkCardContent(),
+          darkCardChild: const CreateCard(),
           lightCardOffsetAnimation: _slideAnimationLightCard,
           darkCardOffsetAnimation: _slideAnimationDarkCard,
-          textColumn: const CommunityTextColumn(),
+          textColumn: const CreateCardText(),
         );
       case 2:
         return OnboardingPage(

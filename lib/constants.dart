@@ -28,4 +28,5 @@ const Duration kLoginAnimationDuration = Duration(milliseconds: 1500);
 // Assets
 class Cards {
   static const String kcard1 = 'assets/card1.png';
+  static const String kcard3 = 'assets/card3.png';
 }

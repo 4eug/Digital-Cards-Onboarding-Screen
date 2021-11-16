@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/text_column.dart';
 
-class CommunityTextColumn extends StatelessWidget {
-  const CommunityTextColumn();
+class CreateCardText extends StatelessWidget {
+  const CreateCardText();
 
   @override
   Widget build(BuildContext context) {

@@ -26,4 +26,6 @@ const Duration kRippleAnimationDuration = Duration(milliseconds: 400);
 const Duration kLoginAnimationDuration = Duration(milliseconds: 1500);
 
 // Assets
-const String kGoogleLogoPath = 'assets/images/google_logo.png';
+class Cards {
+  static const String kcard1 = 'assets/card1.png';
+}

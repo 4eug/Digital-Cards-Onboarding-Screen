@@ -31,7 +31,7 @@ class OnboardingPage extends StatelessWidget {
           lightCardOffsetAnimation: lightCardOffsetAnimation,
           darkCardOffsetAnimation: darkCardOffsetAnimation,
         ),
-        SizedBox(height: number % 2 == 1 ? 50.0 : 25.0),
+        // SizedBox(height: number % 2 == 1 ? 50.0 : 25.0),
         AnimatedSwitcher(
           duration: kCardAnimationDuration,
           child: textColumn,

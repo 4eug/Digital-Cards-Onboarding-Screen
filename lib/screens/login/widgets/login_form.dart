@@ -60,10 +60,10 @@ class LoginForm extends StatelessWidget {
               color: kWhite,
               textColor: kBlack.withOpacity(0.5),
               text: 'Continue with Google',
-              image: const Image(
-                image: AssetImage(kGoogleLogoPath),
-                height: 48.0,
-              ),
+              // image: const Image(
+              //   image: AssetImage(kGoogleLogoPath),
+              //   height: 48.0,
+              // ),
               onPressed: () {},
             ),
           ),
